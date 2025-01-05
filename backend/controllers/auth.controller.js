@@ -90,8 +90,6 @@ export async function signup(req, res) {
   }
 }
 
-
-
 // hàm đăng nhập người dùng
 export async function login(req, res) {
   try {
@@ -108,13 +106,13 @@ export async function login(req, res) {
     if (!user) {
       return res
         .status(400)
-        .json({ success: false, message: "Invalid credentials" });
+        .json({ success: false, message: "invalid email" });
     }
 
     const ispasswordValid = await bcryptjs.compare(password, user.password);
-
+    
     if(!ispasswordValid){
-      return res.status(400).json({success: false, message: "Invalid credentials"});
+      return res.status(400).json({success: false, message: "invalid password"});
     }
 
     generateTokenandsetcookie(user._id, res);
@@ -131,8 +129,6 @@ export async function login(req, res) {
     res.status(500).json({ success: false, message: error.message });
   }
 }
-
-
 
 // hàm đăng xuất người dùng
 

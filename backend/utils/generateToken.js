@@ -12,4 +12,5 @@ export const generateTokenandsetcookie = (userid,res) =>{
         sameSite: "strict",// csrf attack
         secure: ENV_VARS.NODE_ENV !== 'development' // https,
     });
+    return token;
 }
