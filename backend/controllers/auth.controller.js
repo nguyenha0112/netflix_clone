@@ -53,9 +53,9 @@ export async function signup(req, res) {
 
     const salt = await bcryptjs.genSalt(10); // tạo muối cho mật khẩu
     const hashedPassword = await bcryptjs.hash(password, salt);
-
     // bảo mật cho mật khẩu người dùng
 
+    
     // Danh sách hình đại diện mặc định
     const PROFILE_PICS = ["/avatar1.png", "/avartar2.png", "/avatar3.png"];
     // Chọn ngẫu nhiên một hình từ danh sách trên
