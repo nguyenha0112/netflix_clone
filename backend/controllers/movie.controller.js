@@ -5,9 +5,11 @@ export async function getTrendingMovies(req, res) {
     const data = await fetchFromTMDB(
       "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
     );
+    //ggoi api
     const ramdomovie =
       data.results[Math.floor(Math.random() * data.results?.length)];
     res.json({ success: true, content: ramdomovie });
+    // lay ket qua ngau nhien
   } catch (error) {
     console.log("Error on getTrendingMovie", error.message);
     res.status(500).json({ success: false, message: error.message });

@@ -51,7 +51,7 @@ export async function signup(req, res) {
       });
     }
 
-    const salt = await bcryptjs.genSalt(10); // tạo muối cho mật khẩu
+    const salt = await bcryptjs.genSalt(10); // tạo mã hóahóa cho mật khẩu
     const hashedPassword = await bcryptjs.hash(password, salt);
     // bảo mật cho mật khẩu người dùng
 

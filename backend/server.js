@@ -8,9 +8,10 @@ const app = express();
 const PORT = ENV_VARS.PORT;
 
 console.log("MONGO_URI: ", process.env.MONGO_URI);
-app.use(express.json()); // will allow us to parse incoming json data
+app.use(express.json()); 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movies", movieRoutes);
+
 
 
 

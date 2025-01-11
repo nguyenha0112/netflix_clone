@@ -14,6 +14,9 @@ export const fetchFromTMDB = async (url) => {
 console.log( options.headers.Authorization);
   const response = await axios.get(url,options);
 
+
+   
+
   if(response.status !== 200){
     throw new Error("Failed to fetch data from TMDB API" + response.statusText);
   }
