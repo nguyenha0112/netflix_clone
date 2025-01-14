@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// tao user
 const userSchema = new mongoose.Schema({
   username: { 
     type: String,

@@ -1,9 +1,9 @@
 import { fetchFromTMDB } from "../services/tmdb.service.js";
 
-export async function getTrendingMovies(req, res) {
+export async function getTrendingTV(req, res) {
   try {
     const data = await fetchFromTMDB(
-      "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
+      "https://api.themoviedb.org/3/trending/tv/day?language=en-US"
     );
     //ggoi api
     const ramdomovie =
@@ -16,13 +16,13 @@ export async function getTrendingMovies(req, res) {
   }
 }
 
-export async function getmovietrailer(req, res) {
+export async function getTVtrailer(req, res) {
   //tao ra api de lay trailer
   const { id } = req.params;
   try {
     //goi api
     const data = await fetchFromTMDB(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`
+      `https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`
     );
     //lay trailer
     res.json({ success: true, trailers: data.results });
@@ -35,13 +35,13 @@ export async function getmovietrailer(req, res) {
   }
 }
 
-export async function getmovietdetails(req, res) {
+export async function getTVtdetails(req, res) {
   //tao ra api de lay thong tin chi tiet cua phim
   const { id } = req.params;
   try {
     //goi api
     const data = await fetchFromTMDB(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-U`
+      `https://api.themoviedb.org/3/tv/${id}?language=en-U`
     );
     //lay thong tin chi tiet cua phim
     res.json({ success: true, content: data });
@@ -53,13 +53,13 @@ export async function getmovietdetails(req, res) {
   }
 }
 
-export async function getmoviesimilar(req, res) {
+export async function getTVimilar(req, res) {
   //tao ra api de lay phim khac
   const { id } = req.params;
   try {
     //goi api
     const data = await fetchFromTMDB(
-      `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`
     );
     //lay phim khac
     res.json({ success: true, content: data.results });
@@ -71,13 +71,13 @@ export async function getmoviesimilar(req, res) {
   }
 }
 
-export async function getMoviesByCategory(req, res) {
+export async function getTVByCategory(req, res) {
 const { category } = req.params;
 //tao ra api de lay phim theo the loai
   try {
     //goi api
     const data = await fetchFromTMDB(
-      `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${category}?language=en-US&page=1`
     );
     //lay phim theo the loai
     res.json({ success: true, content: data.results });
