@@ -13,11 +13,13 @@ export async function SearchPerson(req, res) {
     }
 
     await User.findByIdAndUpdate(req.user._id, {
+        // sử dụng push để thêm phần tử vào mảng
+      // searchHistory của user
       $push: { searchHistory:{
         person: response.results[0].id,
         Image: response.results[0].profile_path,
         title: response.results[0].name,
-        searchTyo: "person",
+        searchType: "person",
         createAt: new Date(),
       } },
     }); //update search history
@@ -46,7 +48,7 @@ export async function SearchMovie(req, res) {
           person: response.results[0].id,
           Image: response.results[0].profile_path,
           title: response.results[0].name,
-          searchTyo: "movie",
+          searchType: "movie",
           createAt: new Date(),
         } },
       }); //update search history
@@ -77,7 +79,7 @@ export async function SearchTVShow(req, res) {
         person: response.results[0].id,
         Image: response.results[0].profile_path,
         title: response.results[0].name,
-        searchTyo: "movie",
+        searchType: "tvtv",
         createAt: new Date(),
       } },
     }); //update search history
@@ -89,4 +91,18 @@ export async function SearchTVShow(req, res) {
    console.log(" error on SearchMovie", error.message);
     res.status(500).json({ success: false, message: error.message });
   }
+}
+
+export async function getSearchHistory(req, res) {
+  try{
+    res.status(200).json({success: true, content: req.user.searchHistory});
+  }
+  catch(error){
+    console.log("Error on getSearchHistory", error.message);
+    res.status(500).json({success: false, message: error.message});
+  }
+}
+
+export async function removeItemFromSearchHistory(req, res) { 
+  const { id } = req.params; //get id from request
 }
