@@ -17,7 +17,7 @@ const app = express();
 const PORT = ENV_VARS.PORT;
 // tao bien moi truong
 
-console.log("MONGO_URI: ", process.env.MONGO_URI);
+// console.log("MONGO_URI: ", process.env.MONGO_URI);
 app.use(cookieParser());
 app.use(express.json()); 
 

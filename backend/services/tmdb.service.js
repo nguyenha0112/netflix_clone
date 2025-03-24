@@ -11,7 +11,7 @@ export const fetchFromTMDB = async (url) => {
       Authorization: ENV_VARS.TMDB_API_KEY,
     },
   };
-console.log( options.headers.Authorization);
+   console.log( options.headers.Authorization);
   const response = await axios.get(url,options);
 
 

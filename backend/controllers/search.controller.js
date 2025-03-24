@@ -79,7 +79,7 @@ export async function SearchTVShow(req, res) {
         person: response.results[0].id,
         Image: response.results[0].profile_path,
         title: response.results[0].name,
-        searchType: "tvtv",
+        searchType: "tv",
         createAt: new Date(),
       } },
     }); //update search history
