@@ -1,14 +1,8 @@
-import { useState } from 'react'
-import './App.css'
-import { Router } from 'express'
-import { useLocation } from 'react-router-dom'
-import { Routes, Route } from 'react-router-dom'
 
-
-import {HomePage} from './pages/HomePage.jsx'
-import {LoginPage} from './pages/LoginPage.jsx'
-import {SignUpPage} from './pages/SignUpPage.jsx'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
 
 function App() {
   return (
@@ -21,19 +15,13 @@ function App() {
 }
 
 function AppRoutes() {
-  const location = useLocation();
-
-
   return (
-    <div>
-      <Routes>
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/Login" element={<LoginPage />} />
-        <Route path="/SignUp" element={<SignUpPage />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/Login" element={<LoginPage />} />
+      <Route path="/SignUp" element={<SignupPage />} />
+    </Routes>
   );
 }
 
-
-export default App
+export default App;
