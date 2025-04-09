@@ -11,6 +11,10 @@ import netflixLogo from './logos_netflix.png';
 import strangerThingsLg from './stranger-things-lg.png';
 import strangerThingsSm from './stranger-things-sm.png';
 import tv from './tv.png';
+import video_devices from '../assets/video-devices.m4v';
+import video_hero from '../assets/hero-vid.m4v';
+
+
 
 const images = {
   notFound,
@@ -26,6 +30,8 @@ const images = {
   strangerThingsLg,
   strangerThingsSm,
   tv,
+  video_devices,
+  video_hero
 };
 
 export default images;

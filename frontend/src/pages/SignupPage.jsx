@@ -2,16 +2,24 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
 import images from "../assets/image.js";
+import { useStore } from "zustand";
+import { useAuthUser } from "../stores/authUser.js";
 
 const SignupPage = () => {
-  const [email, setEmail] = useState("");
+  const {searchParams} = new URL(window.location.href); // lấy searchParams từ url hiện tại
+  const emailvalua = searchParams.get("email") || ""; // lấy giá trị email từ url nếu có
+
+  const [email, setEmail] = useState(emailvalua || "");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const {signup} = useAuthUser();
+
+  
+
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Username:", username);
+    signup({ email, username, password })
   }
   return (
     <div className=" h-screen w-full hero-bg">
