@@ -23,7 +23,7 @@ app.use(express.json());
 
 
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/movies",protectRoute,movieRoutes);
+app.use("/api/v1/movies",movieRoutes);
 app.use("/api/v1/tvs", protectRoute, tvRoutes);
 app.use("/api/v1/search", protectRoute, searchRoutes);
 

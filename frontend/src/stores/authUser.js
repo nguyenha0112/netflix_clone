@@ -18,7 +18,20 @@ export const useAuthUser = create((set) => ({
       set({ isSigninUp: false, user: null });
     }
   },
-  login: async () => {},
+  login: async () => {
+    try {
+      set({ isSigninUp: true });
+      const response = await axios.get("/api/v1/auth/login", {
+        withCredentials: true,
+      });
+      set({ user: response.data.user, isSigninUp: false });
+    }
+    catch (error) {
+      console.error("Error during login:", error.response?.data || error.message);
+      toast.error(error.response?.data?.message || "Đăng nhập không thành công");
+      set({ isSigninUp: false, user: null });
+    }
+  },
   logout: async () => {},
   authcheck: async () => {},
 }));

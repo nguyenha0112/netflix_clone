@@ -5,6 +5,18 @@ export async function getTrendingMovies(req, res) {
     const data = await fetchFromTMDB(
       "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
     );
+    const movies = data.results; // Lấy toàn bộ danh sách phim
+    res.json({ success: true, content: movies }); // Trả về danh sách phim
+  } catch (error) {
+    console.log("Error on getTrendingMovies", error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+export async function getTrendingMovie(req, res) {
+  try {
+    const data = await fetchFromTMDB(
+      "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
+    );
     //ggoi api
     const ramdomovie =
       data.results[Math.floor(Math.random() * data.results?.length)];
